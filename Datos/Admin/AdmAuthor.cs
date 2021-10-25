@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -117,6 +118,34 @@ namespace Datos.Admin
 
             return authors;
 
+        }
+
+        public static DataTable ListarDataTable(string Ciudad)
+        {
+            string query = "SELECT au_id,au_lname,au_fname,phone,address,city,state,zip,contract FROM dbo.authors WHERE city=@city";
+
+            SqlDataAdapter adapter = new SqlDataAdapter(query, AdminDB.ConectarBD());
+
+            adapter.SelectCommand.Parameters.Add("@city", SqlDbType.VarChar, 20).Value = Ciudad;
+
+            DataSet ds = new DataSet();
+
+            adapter.Fill(ds, "Authors");
+
+            return ds.Tables["Authors"];
+        }
+
+        public static DataTable ListarSoloCiudades()
+        {
+            string query = "SELECT distinct city FROM dbo.authors";
+
+            SqlDataAdapter adapter = new SqlDataAdapter(query, AdminDB.ConectarBD());
+
+            DataSet ds = new DataSet();
+
+            adapter.Fill(ds, "Ciudad");
+
+            return ds.Tables["Ciudad"];
         }
     }
 }

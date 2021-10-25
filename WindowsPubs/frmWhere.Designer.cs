@@ -35,6 +35,8 @@ namespace WindowsPubs
             this.label2 = new System.Windows.Forms.Label();
             this.txtEstado = new System.Windows.Forms.TextBox();
             this.GridAuthor = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.GridAuthor)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,6 +84,7 @@ namespace WindowsPubs
             // 
             // GridAuthor
             // 
+            this.GridAuthor.AllowUserToAddRows = false;
             this.GridAuthor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridAuthor.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.GridAuthor.Location = new System.Drawing.Point(0, 51);
@@ -89,11 +92,31 @@ namespace WindowsPubs
             this.GridAuthor.Size = new System.Drawing.Size(800, 399);
             this.GridAuthor.TabIndex = 5;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(332, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(86, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Traer por Ciudad";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(335, 24);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(101, 21);
+            this.comboBox1.TabIndex = 7;
+            this.comboBox1.SelectionChangeCommitted += new System.EventHandler(this.comboBox1_SelectionChangeCommitted);
+            // 
             // frmWhere
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.GridAuthor);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtEstado);
@@ -102,6 +125,7 @@ namespace WindowsPubs
             this.Controls.Add(this.btnBuscar);
             this.Name = "frmWhere";
             this.Text = "frmWhere";
+            this.Load += new System.EventHandler(this.frmWhere_Load);
             ((System.ComponentModel.ISupportInitialize)(this.GridAuthor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -116,5 +140,7 @@ namespace WindowsPubs
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtEstado;
         private System.Windows.Forms.DataGridView GridAuthor;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

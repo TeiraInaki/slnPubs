@@ -33,5 +33,36 @@ namespace WindowsPubs
                 }
             }
         }
+
+        private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            string selected = comboBox1.SelectedValue.ToString();
+
+            if (selected == "[TODAS]")
+            {
+                GridAuthor.DataSource = AdmAuthor.Listar();
+            }
+            else GridAuthor.DataSource = AdmAuthor.ListarDataTable(comboBox1.SelectedValue.ToString());
+        }
+
+        private void frmWhere_Load(object sender, EventArgs e)
+        {
+            GridAuthor.DataSource = AdmAuthor.Listar();
+            llenarCombo();
+        }
+
+        private void llenarCombo()
+        {
+            DataTable Ciudad = AdmAuthor.ListarSoloCiudades();
+
+            comboBox1.DataSource = Ciudad;
+            comboBox1.DisplayMember = Ciudad.Columns["city"].ToString();
+            comboBox1.ValueMember = Ciudad.Columns["city"].ToString();
+
+            DataRow filaTotal = Ciudad.NewRow();
+            filaTotal["city"] = "[TODAS]";
+
+            Ciudad.Rows.InsertAt(filaTotal, 0);
+        }
     }
 }

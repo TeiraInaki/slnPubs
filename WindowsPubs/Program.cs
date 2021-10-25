@@ -16,7 +16,7 @@ namespace WindowsPubs
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmPublisher2());
+            Application.Run(new frmWhere());
         }
     }
 }
